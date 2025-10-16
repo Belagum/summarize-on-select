@@ -203,21 +203,10 @@ async function trySendMessage(tabId, message) {
 }
 
 async function injectContentScript(tabId) {
-  if (chrome.scripting?.executeScript) {
-    await chrome.scripting.executeScript({ target: { tabId }, files: ['src/content/content.js'] });
-    return;
+  const scripting = globalThis.chrome?.scripting ?? globalThis.browser?.scripting;
+  if (!scripting?.executeScript) {
+    throw new Error('Scripting API unavailable: cannot inject content script.');
   }
 
-  if (chrome.tabs?.executeScript) {
-    await new Promise((resolve, reject) => {
-      chrome.tabs.executeScript(tabId, { file: 'src/content/content.js' }, () => {
-        const err = chrome.runtime.lastError;
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      });
-    });
-  }
+  await scripting.executeScript({ target: { tabId }, files: ['src/content/content.js'] });
 }
