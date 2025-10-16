@@ -1,4 +1,4 @@
-# Summarize On Select
+﻿# Summarize On Select
 
 Расширение для Chrome, которое создает краткую сводку выделенного текста с помощью OpenAI API.
 
@@ -86,3 +86,7 @@ Apache-2.0 © 2025 Vova Orig. См. LICENSE и NOTICE.
 
 **Примечание:** Для работы расширения необходим действующий OpenAI API ключ.
 
+## Browser support
+
+- Chrome: use `manifest.json` or the archive `summarize-on-select-chrome.zip` from `build.ps1`.
+- Firefox: use `manifest.firefox.json` (rename to `manifest.json` before loading) or `summarize-on-select-firefox.zip`.
