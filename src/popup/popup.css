@@ -1,0 +1,120 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-hover: #f0f0f0;
+  --bg-active: #e8e8e8;
+  --bg-info: #fff3cd;
+  --border-info: #ffeeba;
+  --text-primary: #333333;
+  --text-info: #856404;
+  --accent-color: #667eea;
+  --gradient-start: #667eea;
+  --gradient-end: #764ba2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #2d2e30;
+    --bg-secondary: #202124;
+    --bg-hover: #3c3d3f;
+    --bg-active: #4a4b4d;
+    --bg-info: #3d3000;
+    --border-info: #5a4600;
+    --text-primary: #e8eaed;
+    --text-info: #f9ab00;
+    --accent-color: #8ab4f8;
+    --gradient-start: #4a5fc1;
+    --gradient-end: #5a3d82;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 280px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  padding: 20px 16px;
+  color: white;
+}
+
+.header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.menu {
+  padding: 8px 0;
+  background: var(--bg-primary);
+}
+
+.menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background: var(--bg-hover);
+}
+
+.menu-item:active {
+  background: var(--bg-active);
+}
+
+.menu-item svg {
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.menu-item span {
+  font-weight: 500;
+}
+
+.info {
+  padding: 12px 16px;
+  background: var(--bg-info);
+  border-top: 1px solid var(--border-info);
+}
+
+.info p {
+  font-size: 13px;
+  color: var(--text-info);
+  text-align: center;
+}
+
+kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 11px;
+  color: var(--text-primary);
+  background: var(--bg-hover);
+  border: 1px solid var(--border-info);
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+}
+

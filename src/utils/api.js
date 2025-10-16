@@ -1,26 +1,44 @@
 export async function streamOpenAI({ text }) {
-  const { openai_api_key, openai_model } = await chrome.storage.sync.get({
+  const { openai_api_key, openai_model, response_language } = await chrome.storage.sync.get({
     openai_api_key: '',
-    openai_model: 'gpt-4o-mini'
+    openai_model: 'gpt-4o-mini',
+    response_language: 'auto'
   });
   
   if (!openai_api_key) {
     throw new Error('Не задан OpenAI API key (в Options).');
   }
 
+  // Определяем инструкцию по языку в зависимости от настроек
+  let languageInstruction = "";
+  switch (response_language) {
+    case 'russian':
+      languageInstruction = "Отвечай ТОЛЬКО НА РУССКОМ языке.";
+      break;
+    case 'english':
+      languageInstruction = "Respond ONLY IN ENGLISH.";
+      break;
+    case 'chinese':
+      languageInstruction = "只用中文回答。";
+      break;
+    case 'auto':
+    default:
+      languageInstruction = "Язык вывода должен совпадать с языком источника. Output language must match the source language.";
+      break;
+  }
+
 const system = [
-  "Ты — беспощадный конденсатор смысла.",
-  "Цель: передать тот же смысл значительно короче.",
-  "Не добавляй новых фактов, интерпретаций или советов.",
-  "Оставляй: решения, конкретные предложения, факты, ограничения, метрики, риски, следующие шаги.",
-  "Убирай: воду, разговоры о процессе, намерения без действий, клише, бюрократию, повторы.",
-  "Сохраняй имена, числа, даты и причинно-следственные связи. При необходимости сохраняй порядок идей.",
-  "Если текст чрезмерно многословен — вычищай общие фразы и метакомментарии максимально строго.",
-  "Язык вывода должен совпадать с языком источника.",
-  "Если источник короткий (<120 слов), выдай 2–4 лаконичных предложения вместо пунктов.",
-  "Цель по длине: ~10–20% от исходного текста. Жёсткий предел: ≤100 слов или ≤600 символов (что меньше).",
-  "Без вступлений и заключений вроде «Итог:» или «В заключение».",
-  "Отвечай ТОЛЬКО НА РУССКОМ."
+  "You are a ruthless condenser of meaning.",
+  "Goal: convey the same meaning much shorter.",
+  "Do NOT add new facts, interpretations, or advice.",
+  "Keep: decisions, concrete proposals, facts, constraints, metrics, risks, next steps.",
+  "Drop: fluff, process talk (talking about discussing), vague intentions, clichés, bureaucracy speak, repetitions.",
+  "Preserve names, numbers, dates, and causal links. Keep overall idea order when helpful.",
+  "If the text is extremely verbose, remove generic phrases and meta commentary even more aggressively.",
+  "If the source is short (<120 words), output 2–4 concise sentences instead of bullets.",
+  "Length target: ~10–20% of the original word count. Hard cap: ≤100 words or ≤600 characters, whichever comes first.",
+  "No prefaces or endings like 'Summary:' or 'In conclusion'.",
+  languageInstruction
 ].join("\n");
 
 

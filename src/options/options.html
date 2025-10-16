@@ -26,6 +26,19 @@
       </p>
     </div>
 
+    <div class="form-group">
+      <label for="language">Язык для ответов</label>
+      <select id="language">
+        <option value="auto">Автоматически (язык исходного текста)</option>
+        <option value="russian">Русский</option>
+        <option value="english">English</option>
+        <option value="chinese">中文 (Китайский)</option>
+      </select>
+      <p class="hint">
+        Выберите язык, на котором AI будет отвечать. "Автоматически" — AI определит язык текста сам.
+      </p>
+    </div>
+
     <div class="actions">
       <button id="save" class="btn-primary">Сохранить</button>
       <span id="status"></span>
@@ -35,9 +48,15 @@
       <h3>Как использовать</h3>
       <ul>
         <li>Выделите текст на любой странице</li>
-        <li>Нажмите <kbd>Alt+N</kbd></li>
+        <li>Нажмите <kbd>Alt+N</kbd> (или свою горячую клавишу)</li>
         <li>Краткая сводка откроется в отдельном окне</li>
       </ul>
+
+      <h3>Настройка горячих клавиш</h3>
+      <p>
+        Хотите изменить комбинацию клавиш для сокращения текста?
+      </p>
+      <button id="openShortcuts" class="btn-secondary">Изменить горячую клавишу</button>
       
       <p class="warning">
         ⚠️ Ключ хранится локально в браузере. Не используйте корпоративные секреты на чужих машинах.

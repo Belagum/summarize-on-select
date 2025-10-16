@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Summarize On Select</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <h1>Summarize On Select</h1>
+    </div>
+    
+    <div class="menu">
+      <button id="openOptions" class="menu-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m-2 2l-4.2 4.2m13.2-5.2l-6 0m-6 0l-6 0m13.2 5.2l-4.2-4.2m-2-2l-4.2-4.2"></path>
+        </svg>
+        <span>Настройки</span>
+      </button>
+      
+      <button id="openShortcuts" class="menu-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <path d="M6 8h.01M10 8h.01M14 8h.01"></path>
+        </svg>
+        <span>Горячие клавиши</span>
+      </button>
+    </div>
+    
+    <div class="info">
+      <p>Выделите текст и нажмите <kbd>Alt+N</kbd></p>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
+

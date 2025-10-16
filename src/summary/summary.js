@@ -8,6 +8,7 @@ src.value = text;
 
 if (!text) {
   out.innerHTML = `<div class="err">Пустой текст</div>`;
+  statusEl.style.display = 'none';
 } else {
   chrome.runtime.sendMessage({ 
     type: "start-openai-stream", 
@@ -17,13 +18,13 @@ if (!text) {
     if (err) {
       out.innerHTML = `<div class="err">${escapeHtml(err.message)}</div>`;
       statusEl.textContent = 'Ошибка';
+      statusEl.classList.remove('loading');
       return;
     }
-    if (resp && resp.ok) {
-      statusEl.textContent = 'Streaming';
-    } else if (resp && resp.error) {
+    if (resp && !resp.ok && resp.error) {
       out.innerHTML = `<div class="err">${escapeHtml(resp.error)}</div>`;
       statusEl.textContent = 'Ошибка';
+      statusEl.classList.remove('loading');
     }
   });
 }
@@ -33,10 +34,11 @@ chrome.runtime.onMessage.addListener((msg) => {
     out.textContent += msg.payload?.chunk || '';
   }
   if (msg?.type === "openai-done") {
-    statusEl.textContent = 'Готово';
+    statusEl.style.display = 'none';
   }
   if (msg?.type === "openai-error") {
     statusEl.textContent = 'Ошибка';
+    statusEl.classList.remove('loading');
     out.innerHTML = `<div class="err">${escapeHtml(msg.payload || 'Ошибка запроса')}</div>`;
   }
 });

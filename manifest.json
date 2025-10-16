@@ -14,6 +14,11 @@
 
   "options_page": "src/options/options.html",
 
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Summarize On Select"
+  },
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

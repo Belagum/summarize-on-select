@@ -1,30 +1,68 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-hover: #f1f3f4;
+  --bg-hover-dark: #e8eaed;
+  --bg-warning: #fef7e0;
+  --border-color: #dadce0;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --accent-color: #1a73e8;
+  --accent-hover: #1557b0;
+  --accent-shadow: rgba(26, 115, 232, 0.1);
+  --warning-border: #f9ab00;
+  --error-color: #d93025;
+  --success-color: #0f9d58;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #202124;
+    --bg-secondary: #17181a;
+    --bg-hover: #2d2e30;
+    --bg-hover-dark: #3c3d3f;
+    --bg-warning: #3d3000;
+    --border-color: #5f6368;
+    --text-primary: #e8eaed;
+    --text-secondary: #9aa0a6;
+    --accent-color: #8ab4f8;
+    --accent-hover: #aecbfa;
+    --accent-shadow: rgba(138, 180, 248, 0.2);
+    --warning-border: #f9ab00;
+    --error-color: #f28b82;
+    --success-color: #81c995;
+  }
+}
+
 body { 
   font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial; 
   padding: 0;
   margin: 0;
-  background: #f5f5f5;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .container {
   max-width: 720px;
   margin: 0 auto;
   padding: 24px;
-  background: white;
+  background: var(--bg-primary);
   min-height: 100vh;
 }
 
 h1 {
-  color: #1a73e8;
+  color: var(--accent-color);
   margin-top: 0;
 }
 
 .description {
-  color: #5f6368;
+  color: var(--text-secondary);
   margin-bottom: 24px;
 }
 
 code {
-  background: #f1f3f4;
+  background: var(--bg-hover);
+  color: var(--text-primary);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.9em;
@@ -38,25 +76,30 @@ label {
   display: block; 
   margin: 12px 0 6px;
   font-weight: 500;
-  color: #202124;
+  color: var(--text-primary);
 }
 
 input[type="password"], 
-input[type="text"] { 
+input[type="text"],
+select { 
   width: 100%; 
   padding: 10px; 
-  border: 1px solid #dadce0; 
+  border: 1px solid var(--border-color); 
   border-radius: 8px;
   font-size: 14px;
   box-sizing: border-box;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background-color 0.2s;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 input[type="password"]:focus,
-input[type="text"]:focus {
+input[type="text"]:focus,
+select:focus {
   outline: none;
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px var(--accent-shadow);
 }
 
 button { 
@@ -70,12 +113,23 @@ button {
 }
 
 .btn-primary {
-  background: #1a73e8;
-  color: white;
+  background: var(--accent-color);
+  color: var(--bg-primary);
 }
 
 .btn-primary:hover {
-  background: #1557b0;
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  margin-top: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover-dark);
 }
 
 .actions { 
@@ -86,13 +140,13 @@ button {
 }
 
 .hint { 
-  color: #5f6368; 
+  color: var(--text-secondary); 
   margin-top: 6px;
   font-size: 13px;
 }
 
 .hint a {
-  color: #1a73e8;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
@@ -103,11 +157,11 @@ button {
 .info {
   margin-top: 40px;
   padding-top: 24px;
-  border-top: 1px solid #dadce0;
+  border-top: 1px solid var(--border-color);
 }
 
 .info h3 {
-  color: #202124;
+  color: var(--text-primary);
   margin-top: 0;
 }
 
@@ -117,33 +171,43 @@ button {
 
 .info li {
   margin-bottom: 8px;
-  color: #5f6368;
+  color: var(--text-secondary);
+}
+
+.info ol {
+  padding-left: 20px;
+}
+
+.info ol li {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
 }
 
 kbd {
-  background: #f1f3f4;
+  background: var(--bg-hover);
+  color: var(--text-primary);
   padding: 2px 8px;
   border-radius: 4px;
-  border: 1px solid #dadce0;
+  border: 1px solid var(--border-color);
   font-family: monospace;
   font-size: 0.9em;
 }
 
 .warning {
-  background: #fef7e0;
-  border-left: 4px solid #f9ab00;
+  background: var(--bg-warning);
+  border-left: 4px solid var(--warning-border);
   padding: 12px;
   border-radius: 4px;
-  color: #5f6368;
+  color: var(--text-secondary);
 }
 
 #status.ok { 
-  color: #0f9d58;
+  color: var(--success-color);
   font-weight: 500;
 }
 
 #status.err { 
-  color: #d93025;
+  color: var(--error-color);
   font-weight: 500;
 }
 

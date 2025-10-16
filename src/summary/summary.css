@@ -1,12 +1,31 @@
 :root { 
-  color-scheme: light dark; 
+  color-scheme: light dark;
+  --bg-primary: #ffffff;
+  --text-primary: #202124;
+  --border-color: rgba(0,0,0,.1);
+  --chip-bg: rgba(0,0,0,.08);
+  --error-bg: #fdecea;
+  --error-color: #b00020;
+  --textarea-border: rgba(0,0,0,.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #202124;
+    --text-primary: #e8eaed;
+    --border-color: rgba(255,255,255,.1);
+    --chip-bg: rgba(255,255,255,.15);
+    --error-bg: #5d2020;
+    --error-color: #f28b82;
+    --textarea-border: rgba(255,255,255,.2);
+  }
 }
 
 body {
   margin: 0; 
   font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: canvas; 
-  color: canvastext;
+  background: var(--bg-primary); 
+  color: var(--text-primary);
 }
 
 header {
@@ -14,10 +33,10 @@ header {
   align-items: center; 
   gap: 10px;
   padding: 10px 12px; 
-  border-bottom: 1px solid rgba(0,0,0,.1);
+  border-bottom: 1px solid var(--border-color);
   position: sticky; 
   top: 0; 
-  background: inherit; 
+  background: var(--bg-primary); 
   z-index: 1;
 }
 
@@ -29,7 +48,38 @@ header {
   font-size: 12px; 
   padding: 3px 8px; 
   border-radius: 999px; 
-  background: rgba(0,0,0,.08); 
+  background: var(--chip-bg);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.chip.loading .dot {
+  display: inline-block;
+  animation: bounce 1.4s infinite ease-in-out;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.chip.loading .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.chip.loading .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.chip.loading .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-8px);
+  }
 }
 
 #out { 
@@ -45,14 +95,14 @@ header {
 
 footer { 
   padding: 10px 12px; 
-  border-top: 1px solid rgba(0,0,0,.1); 
+  border-top: 1px solid var(--border-color); 
   font-size: 12px; 
   opacity: .75; 
 }
 
 .err { 
-  color: #b00020; 
-  background: #fdecea; 
+  color: var(--error-color); 
+  background: var(--error-bg); 
   padding: 6px 8px; 
   border-radius: 8px; 
 }
@@ -62,7 +112,9 @@ textarea {
   min-height: 80px; 
   padding: 8px; 
   border-radius: 8px; 
-  border: 1px solid rgba(0,0,0,.2);
+  border: 1px solid var(--textarea-border);
   font: inherit;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
