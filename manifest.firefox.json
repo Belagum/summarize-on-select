@@ -1,11 +1,12 @@
 {
   "name": "Summarize On Select",
   "description": "Выдели текст, нажми Alt+N — краткая сводка откроется в отдельном окне.",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "manifest_version": 3,
+
   "browser_specific_settings": {
     "gecko": {
-      "id": "summarize-on-select@example.com",
+      "id": "belagum@belagum.ru",
       "strict_min_version": "140.0",
       "data_collection_permissions": {
         "required": ["none"]
@@ -28,9 +29,22 @@
 
   "options_page": "src/options/options.html",
 
+  "icons": {
+    "16":  "src/icons/icon-16.png",
+    "32":  "src/icons/icon-32.png",
+    "48":  "src/icons/icon-48.png",
+    "64":  "src/icons/icon-64.png",
+    "96":  "src/icons/icon-96.png",
+    "128": "src/icons/icon-128.png"
+  },
+
   "action": {
+    "default_title": "Summarize On Select",
     "default_popup": "src/popup/popup.html",
-    "default_title": "Summarize On Select"
+    "default_icon": {
+      "16": "src/icons/icon-16.png",
+      "32": "src/icons/icon-32.png"
+    }
   },
 
   "content_scripts": [
