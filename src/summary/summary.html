@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Краткая сводка</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="summary.css" />
+</head>
+<body>
+  <header>
+    <div class="header-title">Краткая сводка</div>
+    <span id="status" class="chip">Готовим…</span>
+  </header>
+
+  <div id="out"></div>
+
+  <details class="source-details">
+    <summary>Показать исходный фрагмент</summary>
+    <textarea id="src" readonly></textarea>
+  </details>
+
+  <footer>
+    Советы: измените выделение на странице и снова нажмите Alt+N. Ключ и модель настраиваются в Options.
+  </footer>
+
+  <script src="summary.js" type="module"></script>
+</body>
+</html>
+

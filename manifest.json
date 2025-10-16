@@ -1,0 +1,31 @@
+{
+  "name": "Summarize On Select",
+  "description": "Выдели текст, нажми Alt+N — краткая сводка откроется в отдельном окне.",
+  "version": "1.2.0",
+  "manifest_version": 3,
+
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://api.openai.com/*"],
+
+  "background": {
+    "service_worker": "src/background/background.js",
+    "type": "module"
+  },
+
+  "options_page": "src/options/options.html",
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "commands": {
+    "summarize-selection": {
+      "suggested_key": { "default": "Alt+N" },
+      "description": "Суммировать текущее выделение"
+    }
+  }
+}

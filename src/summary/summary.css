@@ -1,0 +1,68 @@
+:root { 
+  color-scheme: light dark; 
+}
+
+body {
+  margin: 0; 
+  font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: canvas; 
+  color: canvastext;
+}
+
+header {
+  display: flex; 
+  align-items: center; 
+  gap: 10px;
+  padding: 10px 12px; 
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  position: sticky; 
+  top: 0; 
+  background: inherit; 
+  z-index: 1;
+}
+
+.header-title {
+  font-weight: 600;
+}
+
+.chip { 
+  font-size: 12px; 
+  padding: 3px 8px; 
+  border-radius: 999px; 
+  background: rgba(0,0,0,.08); 
+}
+
+#out { 
+  padding: 14px 14px 18px; 
+  white-space: pre-wrap; 
+  word-break: break-word; 
+  min-height: 140px; 
+}
+
+.source-details {
+  padding: 0 14px 14px;
+}
+
+footer { 
+  padding: 10px 12px; 
+  border-top: 1px solid rgba(0,0,0,.1); 
+  font-size: 12px; 
+  opacity: .75; 
+}
+
+.err { 
+  color: #b00020; 
+  background: #fdecea; 
+  padding: 6px 8px; 
+  border-radius: 8px; 
+}
+
+textarea {
+  width: 100%; 
+  min-height: 80px; 
+  padding: 8px; 
+  border-radius: 8px; 
+  border: 1px solid rgba(0,0,0,.2);
+  font: inherit;
+}
+

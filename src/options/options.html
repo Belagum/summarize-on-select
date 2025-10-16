@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Настройки Summarize On Select</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Summarize On Select — настройки</h1>
+    <p class="description">Сюда безопасно сохраняется ваш OpenAI API key (<code>chrome.storage</code>).</p>
+
+    <div class="form-group">
+      <label for="apiKey">OpenAI API Key</label>
+      <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
+      <p class="hint">
+        Получите ключ на <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label for="model">Модель</label>
+      <input id="model" type="text" value="gpt-4o-mini" />
+      <p class="hint">
+        Рекомендуемые: gpt-4o-mini (быстрее и дешевле), gpt-4o (точнее)
+      </p>
+    </div>
+
+    <div class="actions">
+      <button id="save" class="btn-primary">Сохранить</button>
+      <span id="status"></span>
+    </div>
+
+    <div class="info">
+      <h3>Как использовать</h3>
+      <ul>
+        <li>Выделите текст на любой странице</li>
+        <li>Нажмите <kbd>Alt+N</kbd></li>
+        <li>Краткая сводка откроется в отдельном окне</li>
+      </ul>
+      
+      <p class="warning">
+        ⚠️ Ключ хранится локально в браузере. Не используйте корпоративные секреты на чужих машинах.
+      </p>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
+
