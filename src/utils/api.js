@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2025 Vova Orig
+
 export async function streamOpenAI({ text }) {
   const { openai_api_key, openai_model, response_language } = await chrome.storage.sync.get({
     openai_api_key: '',
@@ -9,7 +12,6 @@ export async function streamOpenAI({ text }) {
     throw new Error('Не задан OpenAI API key (в Options).');
   }
 
-  // Определяем инструкцию по языку в зависимости от настроек
   let languageInstruction = "";
   switch (response_language) {
     case 'russian':

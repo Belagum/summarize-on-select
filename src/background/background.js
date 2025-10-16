@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2025 Vova Orig
+
 import { streamOpenAI } from '../utils/api.js';
 
 async function openSummaryWindow(selectionText) {

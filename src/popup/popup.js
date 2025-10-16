@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2025 Vova Orig
+
 document.getElementById('openOptions').addEventListener('click', () => {
   chrome.runtime.openOptionsPage();
   window.close();

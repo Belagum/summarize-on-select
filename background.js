@@ -1,5 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2025 Vova Orig
 
-// Получение чанков из OpenAI (Chat Completions, stream=true)
 async function streamOpenAI({ text }) {
   const { openai_api_key, openai_model } = await chrome.storage.sync.get({
     openai_api_key: '',
@@ -47,7 +48,6 @@ async function streamOpenAI({ text }) {
     const t = await resp.text().catch(() => "");
     throw new Error(`HTTP ${resp.status}. ${t}`);
   }
-  // Возвращаем асинх. итератор чанков
   const reader = resp.body.getReader();
   const decoder = new TextDecoder("utf-8");
   let buffer = "";
@@ -150,9 +150,7 @@ chrome.commands.onCommand.addListener(async (command) => {
     const ok = await trySendMessage(tab.id, { type: 'sos-hotkey-summarize' });
     if (ok) return;
 
-    // если скрипта нет — доинжектим и повторим
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });
-    await sleep(50);
     await trySendMessage(tab.id, { type: 'sos-hotkey-summarize' });
   } catch {
   }
